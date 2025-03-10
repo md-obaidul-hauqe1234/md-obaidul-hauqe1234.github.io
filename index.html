@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <base href="/flutter_web/">
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description"
+          content="ChunhThanhDe is a passionate Software Engineer, Android Developer & Flutter Developer based in HaNoi, VietNam.">
+    <meta name="keywords"
+          content="Nguyển Thành Chung. Chung Nguyen Thanh, Nguyen Thanh Chung, ChunhThanhDe, ChunhThanhDe Software Engineers in VietNam, chunhthanhde.github.io">
+    <meta name="author" content="ChunhThanhDe">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="profile">
+    <link rel="apple-touch-icon" href="./assets/icons/avatar.png">
+
+    <!-- avatar -->
+    <link rel="shortcut icon" type="image/png" href="./assets/avatar.png"/>
+
+    <title>ChunhThanhDe says Hi 🤟</title>
+
+    <link rel="manifest" href="./assets/manifest.json">
+
+    <style>
+        .container {
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: Poppins; /* Sử dụng font Poppins */
+        }
+        .indicator{
+          width: 16vw;
+        }
+
+        /* Điều kiện: Màn hình điện thoại */
+        @media (max-width: 600px) {
+            .indicator {
+                width: 32vw;
+            }
+        }
+
+        /* Điều kiện: Màn hình máy tính ngang */
+        @media (min-width: 601px) {
+            .indicator {
+                width: 16vw;
+            }
+        }
+    </style>
+
+</head>
+<body style="overflow: hidden">
+<div id="loading_indicator" class="container">
+    <img class="indicator" src="./assets/loading.gif" alt="loading"/>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: 'AIzaSyBVvURh_Ar9VTVFKndo8jmSb6kvfpcdqrU',
+      appId: '1:1085560411698:web:c68e93989663d01cca0e2b',
+      messagingSenderId: '1085560411698',
+      projectId: 'personal-profile-project-be477',
+      authDomain: 'personal-profile-project-be477.firebaseapp.com',
+      databaseURL: 'https://personal-profile-project-be477-default-rtdb.asia-southeast1.firebasedatabase.app',
+      storageBucket: 'personal-profile-project-be477.appspot.com',
+      measurementId: 'G-YBXX3M3NVY',
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<!-- This script installs service_worker.js to provide PWA functionality to
+     application. For more information, see:
+     https://developers.google.com/web/fundamentals/primers/service-workers -->
+
+<!--<script>-->
+<!--    if ('serviceWorker' in navigator) {-->
+<!--      window.addEventListener('flutter-first-frame', function () {-->
+<!--        navigator.serviceWorker.register('flutter_service_worker.js?v=4183335885');-->
+<!--      });-->
+<!--    }-->
+
+<!--</script>-->
+
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js')
+          .then((reg) => {
+            console.log('Service worker registered:', reg);
+          })
+          .catch((error) => {
+            console.error('Service worker registration failed:', error);
+          });
+      });
+    }
+</script>
+
+<script>
+    window.onload = function () {
+      setTimeout(function () {
+        var loadingIndicator = document.getElementById("loading_indicator");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
+        }
+      }, 10000);
+  };
+</script>
+
+<script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
